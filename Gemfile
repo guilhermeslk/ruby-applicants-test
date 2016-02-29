@@ -14,8 +14,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
-  gem 'webmock', '~> 1.24', '>= 1.24.1'
-  gem 'vcr', '~> 3.0', '>= 3.0.1'
 end
 
 group :development do
@@ -23,6 +21,8 @@ group :development do
 end
 
 group :test do
+  gem 'webmock', '~> 1.24', '>= 1.24.1'
+  gem 'vcr', '~> 3.0', '>= 3.0.1'
   gem 'rspec-rails'
   gem 'simplecov'
 end
