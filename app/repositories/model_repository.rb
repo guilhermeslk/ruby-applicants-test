@@ -11,7 +11,10 @@ class ModelRepository
 
   def self.get_filtered_results(make_id)
     make = Make.where(webmotors_id: make_id).first
-    existing = Model.where(make_id: make.id).pluck(:name)
-    self.request_all(marca: make_id).inject([]) { |a, i| a << { make_id: make.id, name: i["Nome"] } unless existing.include?(i["Nome"]); a }
+    local_data = Model.where(make_id: make.id).pluck(:name)
+    self.request_all(marca: make_id).inject([]) do |results, item|
+      results << { make_id: make.id, name: item["Nome"] } unless local_data.include?(item["Nome"]);
+      results
+    end
   end
 end

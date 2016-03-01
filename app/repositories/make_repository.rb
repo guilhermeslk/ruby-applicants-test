@@ -10,7 +10,10 @@ class MakeRepository
   private
 
   def self.get_filtered_results
-    existing = Make.all.pluck(:name)
-    self.request_all.reduce([]) { |a, i| a << { name: i["Nome"], webmotors_id: i["Id"] } unless existing.include?(i["Nome"]); a }
+    local_data = Make.all.pluck(:name)
+    self.request_all.inject([]) do |results, item|
+      results << { name: item["Nome"], webmotors_id: item["Id"] } unless local_data.include?(item["Nome"])
+      results
+    end
   end
 end
