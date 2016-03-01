@@ -1,7 +1,7 @@
 class MakeRepository
   include WebMotorsApiService
 
-  base_uri '/carro/marcas'
+  endpoint '/carro/marcas'
 
   def self.fetch_and_save
     Make.create(get_filtered_results)

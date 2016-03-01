@@ -6,7 +6,7 @@ module WebMotorsApiService
   module ClassMethods
     attr_accessor :uri
 
-    def base_uri(uri)
+    def endpoint(uri)
       self.uri = URI("#{ENV['BASE_URL']}#{uri}")
     end
 

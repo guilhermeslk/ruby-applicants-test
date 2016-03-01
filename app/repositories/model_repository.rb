@@ -1,7 +1,7 @@
 class ModelRepository
   include WebMotorsApiService
 
-  base_uri '/carro/modelos'
+  endpoint '/carro/modelos'
 
   def self.fetch_and_save(make_id)
     Model.create(get_filtered_results(make_id))
